@@ -21,8 +21,7 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title class="ion-text-center">
-        <ion-button size="default">{{producto?.price | currency}}</ion-button
-        >
+        <ion-button size="default">{{producto?.price | currency}}</ion-button>
         {{producto?.nombre}}</ion-card-title
       >
       <ion-card-subtitle>{{producto?.categoria}}</ion-card-subtitle>
@@ -56,21 +55,21 @@
   </ion-list>
 
   <ion-list inset="true">
-    <ion-item style="text-align: right;">
+    <ion-item style="text-align: right">
       <ion-input
         label="Subtotal"
         value="{{subtotal | currency}}"
         [readonly]="true"
       ></ion-input>
     </ion-item>
-    <ion-item style="text-align: right;">
+    <ion-item style="text-align: right">
       <ion-input
         label="IVA"
         value="{{iva | currency}}"
         [readonly]="true"
       ></ion-input>
     </ion-item>
-    <ion-item style="text-align: right;">
+    <ion-item style="text-align: right">
       <ion-input
         label="Total"
         value="{{total | currency}}"

@@ -1,7 +1,23 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import {
+  IonContent,
+  IonHeader,
+  IonList,
+  IonTitle,
+  IonToolbar,
+  IonButtons,
+  IonMenuButton,
+  IonThumbnail,
+  IonLabel,
+  IonText,
+  IonItem,
+  IonInput,
+  IonAlert,
+  IonFooter,
+  IonButton
+} from '@ionic/angular/standalone';
 import { CarritoComprasTemporalService } from '../servicios/CarritoComprasTemporal.service';
 import { CarritoCompras } from '../interfaces/CarritoCompras';
 import { LoginService } from '../servicios/Login.service';
@@ -13,7 +29,26 @@ import { CarritoComprasService } from '../servicios/CarritoComprasService.servic
   templateUrl: './carrito-compras.page.html',
   styleUrls: ['./carrito-compras.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterLink],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    IonContent,
+    IonList,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    IonButtons,
+    IonMenuButton,
+    IonThumbnail,
+    IonText,
+    IonLabel,
+    IonItem,
+    IonInput,
+    IonAlert,
+    IonButton,
+    IonFooter
+  ],
 })
 export class CarritoComprasPage {
   private carritoComprasService: CarritoComprasService = inject(

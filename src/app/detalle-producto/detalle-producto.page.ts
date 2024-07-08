@@ -1,18 +1,63 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule, NavController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CarritoComprasService } from '../servicios/CarritoComprasService.service';
 import { Producto } from '../interfaces/Producto';
 import { CarritoComprasTemporalService } from '../servicios/CarritoComprasTemporal.service';
 import { CarritoItem } from '../interfaces/CarritoCompras';
+import {
+  IonContent,
+  IonHeader,
+  IonList,
+  IonTitle,
+  IonToolbar,
+  IonButtons,
+  IonMenuButton,
+  IonLabel,
+  IonItem,
+  IonInput,
+  IonAlert,
+  IonFooter,
+  IonButton,
+  IonCard,
+  IonCardHeader,
+  IonCardContent,
+  IonCardTitle,
+  IonCardSubtitle,
+  IonIcon,
+} from '@ionic/angular/standalone';
+
 @Component({
   selector: 'app-detalle-producto',
   templateUrl: './detalle-producto.page.html',
   styleUrls: ['./detalle-producto.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterLink],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    IonHeader,
+    IonToolbar,
+    IonButtons,
+    IonMenuButton,
+    IonTitle,
+    IonContent,
+    IonList,
+    IonItem,
+    IonAlert,
+    IonFooter,
+    IonButton,
+    IonIcon,
+    IonCard,
+    IonCardHeader,
+    IonCardContent,
+    IonCardTitle,
+    IonCardSubtitle,
+    IonLabel,
+    IonInput
+  ],
 })
 export class DetalleProductoPage {
   private carritoComprasService: CarritoComprasService = inject(
@@ -60,7 +105,7 @@ export class DetalleProductoPage {
   }
 
   sumar() {
-    this.cantidad ++;
+    this.cantidad++;
     this.calcular();
   }
 
@@ -68,7 +113,7 @@ export class DetalleProductoPage {
     if (this.cantidad - 1 == 0) {
       return;
     }
-    this.cantidad --;
+    this.cantidad--;
     this.calcular();
   }
 
@@ -90,7 +135,7 @@ export class DetalleProductoPage {
     this.retroceder();
   }
 
-  calcular(){
+  calcular() {
     if (!this.producto) {
       return;
     }
@@ -99,7 +144,7 @@ export class DetalleProductoPage {
     this.total = this.iva + this.subtotal;
   }
 
-  retroceder(){
+  retroceder() {
     this.navCtrl.back();
   }
 }

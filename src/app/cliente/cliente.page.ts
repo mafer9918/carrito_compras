@@ -6,16 +6,45 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { IonicModule, NavController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { Cliente } from '../interfaces/Cliente';
 import { ClienteService } from '../servicios/Cliente.service';
 import { LoginService } from '../servicios/Login.service';
+import {
+  IonContent,
+  IonHeader,
+  IonList,
+  IonTitle,
+  IonToolbar,
+  IonButtons,
+  IonMenuButton,
+  IonItem,
+  IonAlert,
+  IonFooter,
+  IonButton,
+} from '@ionic/angular/standalone';
+
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.page.html',
   styleUrls: ['./cliente.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IonHeader,
+    IonToolbar,
+    IonButtons,
+    IonMenuButton,
+    IonTitle,
+    IonContent,
+    IonList,
+    IonItem,
+    IonAlert,
+    IonFooter,
+    IonButton
+  ],
 })
 export class ClientePage {
   protected formBuilder: FormBuilder = inject(FormBuilder);
