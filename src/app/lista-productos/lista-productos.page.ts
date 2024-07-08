@@ -4,17 +4,20 @@ import { FormsModule } from '@angular/forms';
 import { CarritoComprasService } from '../servicios/CarritoComprasService.service';
 import { Producto } from '../interfaces/Producto';
 import { IonicModule } from '@ionic/angular';
+import { RouterLink } from '@angular/router';
+import { CarritoComprasTemporalService } from '../servicios/CarritoComprasTemporal.service';
 
 @Component({
   selector: 'app-lista-productos',
   templateUrl: './lista-productos.page.html',
   styleUrls: ['./lista-productos.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule, RouterLink]
 })
 export class ListaProductosPage implements OnInit {
 
   private carritoComprasService: CarritoComprasService = inject(CarritoComprasService);
+  private carritoComprasTemporal: CarritoComprasTemporalService = inject(CarritoComprasTemporalService);
   listaProductos: Producto[] = [];
   ngOnInit(): void {
     this.consultarProductos();
@@ -24,6 +27,9 @@ export class ListaProductosPage implements OnInit {
     this.carritoComprasService.todosProductos().subscribe(data=>{
       this.listaProductos = data.data;
     })
+  }
 
+  getNumeroItems(){
+    return this.carritoComprasTemporal.getTotalItems();
   }
 }

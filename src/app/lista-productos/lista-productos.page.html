@@ -1,23 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-button slot="start">
+    <ion-buttons slot="start">
       <ion-menu-button menu="menuPrincipal"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>PRODUCTOS</ion-title>
+    <ion-button fill="clear" slot="end" [routerLink]="['/carrito-compras']">
+      <ion-icon src="../../assets/icon/cart-outline.svg"></ion-icon>
+      <ion-badge>{{getNumeroItems()}}</ion-badge>
     </ion-button>
-    <ion-title>Lista de Productos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Lista Productos</ion-title>
+      <ion-title size="large">PRODUCTOS</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-list>
+  <ion-list inset="true">
     @for (producto of listaProductos; track producto.id){
-    <ion-item>
+    <ion-item button [routerLink] = "['/detalle-producto/' + producto.id]" lines="full" detail="true">
       <ion-thumbnail slot="start">
         <img [src]="producto.imagen" />
+        <ion-badge>{{producto.price}}</ion-badge>
       </ion-thumbnail>
       <ion-label>{{producto.nombre}}</ion-label>
     </ion-item>

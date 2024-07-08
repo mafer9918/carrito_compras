@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="menuPrincipal"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Carrito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Carrito</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list inset="true">
+    @for (item of carrito.items; track item.id_producto){
+    <ion-item
+      [routerLink]="['/detalle-producto/' + item.id_producto]"
+      lines="full"
+      detail="true"
+    >
+      <ion-thumbnail slot="start">
+        <img [src]="item.imagen" />
+      </ion-thumbnail>
+      <ion-label>
+        {{item.producto}}
+        <ion-item lines="none">
+          <ion-text slot="start">
+            <ion-text>Cant: </ion-text
+            ><ion-text color="primary">{{item.cantidad}}</ion-text>
+          </ion-text>
+          <ion-text slot="end">
+            <ion-text>Tot: </ion-text
+            ><ion-text color="primary">{{item.total | currency}}</ion-text>
+          </ion-text>
+        </ion-item>
+      </ion-label>
+    </ion-item>
+    }
+  </ion-list>
+  <ion-list inset="true">
+    <ion-item style="text-align: right">
+      <ion-input
+        label="Subtotal"
+        value="{{carrito.subtotal | currency}}"
+        [readonly]="true"
+      ></ion-input>
+    </ion-item>
+    <ion-item style="text-align: right">
+      <ion-input
+        label="IVA"
+        value="{{carrito.iva | currency}}"
+        [readonly]="true"
+      ></ion-input>
+    </ion-item>
+    <ion-item style="text-align: right">
+      <ion-input
+        label="Total"
+        value="{{carrito.total | currency}}"
+        [readonly]="true"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-alert
+    [isOpen]="isAlertOpen"
+    header="Excelente!"
+    subHeader="!"
+    message="Su carrito ha sido registrado con éxito!"
+    [buttons]="alertButtons"
+    (didDismiss)="setOpen(false)"
+  ></ion-alert>
+</ion-content>
+
+<ion-footer>
+  <ion-button expand="block" (click)="grabar()" [disabled]="this.getDeshabilitarBtnGrabar()"> GRABAR </ion-button>
+</ion-footer>
