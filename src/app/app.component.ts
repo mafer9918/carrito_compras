@@ -64,7 +64,6 @@ export class AppComponent {
     this.clienteService
       .getCliente(this.email)
       .subscribe((data) => {
-        console.log(data.data);
         if (data.data) {
           if (this.password == data.data.password) {
             this.loginService.abrirSesion(data.data);

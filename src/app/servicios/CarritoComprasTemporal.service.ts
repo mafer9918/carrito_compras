@@ -28,7 +28,6 @@ export class CarritoComprasTemporalService {
       itemSelected.iva = item.iva;
       itemSelected.total = item.total;
     }
-    console.log(this.carrito);
     this.calcular();
   }
 

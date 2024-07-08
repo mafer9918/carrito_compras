@@ -22,4 +22,9 @@ export const routes: Routes = [
     path: 'cliente',
     loadComponent: () => import('./cliente/cliente.page').then( m => m.ClientePage)
   },
+  {
+    path:'',
+    pathMatch:'full',
+    redirectTo:'principal'
+  }
 ];
